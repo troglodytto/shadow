@@ -24,7 +24,17 @@ const {
   .help()
   .alias("help", "h").argv;
 
-async function main({ password, update, show = false, algorithm = "sha256" }) {
+async function main({
+  password,
+  update = "",
+  show = false,
+  algorithm = "sha256",
+}) {
+  if (!password) {
+    console.log(chalk.red("[ ERROR ] Password is required"));
+    process.exit(127);
+  }
+
   const hash = createHmac(algorithm, password).update(update).digest("hex");
   const hidden = hash.substring(0, 10) + "*".repeat(10);
 

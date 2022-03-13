@@ -1,7 +1,7 @@
 {
   "name": "crp",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "crp",
   "license": "MIT",
   "dependencies": {
     "chalk": "4.1.2",
