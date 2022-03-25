@@ -4,25 +4,26 @@ const chalk = require("chalk");
 const { createHmac } = require("crypto");
 const yargs = require("yargs");
 
-const {
-  show,
-  algorithm,
-  _: [password, update],
-} = yargs
-  .option("show", {
-    alias: "s",
-    description: "Should show the Hash in on Terminal",
-    type: "boolean",
-    default: false,
-  })
-  .option("algorithm", {
-    alias: "a",
-    description: "What Algorithm to use (default sha256)",
-    choices: ["sha256", "md5", "sha512", "sha3-512"],
-    default: "sha256",
-  })
-  .help()
-  .alias("help", "h").argv;
+yargs.option("show", {
+  alias: "s",
+  description: "Should show the Hash in on Terminal",
+  type: "boolean",
+  default: false,
+});
+
+yargs.option("algorithm", {
+  alias: "a",
+  description: "What Algorithm to use (default sha256)",
+  choices: ["sha256", "md5", "sha512", "sha3-512"],
+  default: "sha256",
+});
+
+yargs.help();
+
+yargs.alias("help", "h").argv;
+
+const { show, algorithm, _ } = yargs.argv;
+const [password, update] = _;
 
 async function main({
   password,
