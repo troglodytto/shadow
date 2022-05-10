@@ -1,4 +1,4 @@
-#!/home/voldemort/.nvm/versions/node/v16.14.0/bin/node
+#!/home/voldemort/.nvm/versions/node/v16.15.0/bin/node
 
 const chalk = require("chalk");
 const { createHmac } = require("crypto");
